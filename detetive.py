@@ -35,7 +35,7 @@ armas = iter(list((
 crime = {
     'suspeito': 'Donald Duck Knuth',
     'local': 'Tokio',
-    'arma': 'trezoitão'
+    'arma': 'Trezoitão'
 }
 
 
@@ -52,7 +52,7 @@ class Testemunha:
             erros.append(2)
         if crime['arma'] != teoria['arma']:
             erros.append(3)
-
+        # pdb.set_trace()
         return random.choice(erros)
 
 
@@ -86,7 +86,15 @@ while not solucionado:
             teoria['local'] = next(locais)
         if resposta == 3:
             teoria['arma'] = next(armas)
-
+        if resposta == 0:
+            print(
+                "Busted!! %s assassinou uma pessoa em %s com um(a) %s",
+                (teoria['suspeito'], teoria['local'], teoria['arma'])
+            )
+        # pdb.set_trace()
     except StopIteration:
-        pass
-    pdb.set_trace()
+        print("Esse crime é muito complexo para esse humilde detetive. :(")
+        break
+
+
+# pdb.set_trace()

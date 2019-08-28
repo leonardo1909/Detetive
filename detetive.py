@@ -79,6 +79,7 @@ solucionado = False
 
 while not solucionado:
     resposta = detetive.interrogar(testemunha)
+
     try:
         if resposta == 1:
             teoria['suspeito'] = next(suspeitos)
@@ -88,13 +89,13 @@ while not solucionado:
             teoria['arma'] = next(armas)
         if resposta == 0:
             print(
-                "Busted!! %s assassinou uma pessoa em %s com um(a) %s",
-                (teoria['suspeito'], teoria['local'], teoria['arma'])
+                "Busted!! %s assassinou uma pessoa em %s com um(a) %s!!"
+                %(teoria['suspeito'], teoria['local'], teoria['arma'])
             )
-        # pdb.set_trace()
+            break
     except StopIteration:
         print("Esse crime é muito complexo para esse humilde detetive. :(")
         break
 
 
-# pdb.set_trace()
+

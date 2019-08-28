@@ -1,16 +1,16 @@
 import pytest
 from detetive import Detetive, Testemunha
 
-suspeitos = iter(list(
+suspeitos = iter(list((
     'Charles B. Abbage',
     'Donald Duck Knuth',
     'Ada L. Ovelace',
     'Alan T. Uring',
     'Ivar J. Acobson',
     'Ras Mus Ler Dorf'
-))
+)))
 
-locais = iter(list(
+locais = iter(list((
     'Redmond',
     'Palo Alto',
     'San Francisco',
@@ -21,22 +21,22 @@ locais = iter(list(
     'Helsinki',
     'Maida Vale',
     'Toronto'
-))
+)))
 
-armas = iter(list(
+armas = iter(list((
     'Peixeira',
     'DynaTAC 8000X',
     'Trezoitão',
     'Trebuchet',
     'Maça',
     'Gládio'
-))
+)))
 
 
 crime = {
     'suspeito': 'Donald Duck Knuth',
     'local': 'Tokio',
-    'arma': 'trezoitão'
+    'arma': 'Trezoitão'
 }
 
 testemunha = Testemunha
@@ -47,7 +47,12 @@ teoria = {
 }
 
 detetive = Detetive(teoria, crime)
+resposta = detetive.interrogar(testemunha)
 
+def test_ValidaCrime():
+    assert crime['suspeito'] in suspeitos
+    assert crime['local'] in locais
+    assert crime['arma'] in armas
 
-def test_answer():
-    assert detetive.interrogar(testemunha) == 0
+def test_RespostaTestemunha():
+        assert resposta >= 0 and resposta <=3
